@@ -19,4 +19,10 @@ public class DynamicArrayList {
 
 
     }
+
+    public DynamicArrayList() {
+        this.array = new String[capacity];
+    }
+
+
 }
