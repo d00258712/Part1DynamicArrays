@@ -95,5 +95,14 @@ public class DynamicArrayList {
         numElements = newSize;
         return removed;
     }
+    public DynamicArrayList clone() {
+        DynamicArrayList clonedList = new DynamicArrayList();
+        clonedList.array = new String[this.array.length];
+        System.arraycopy(this.array, 0, clonedList.array, 0, this.numElements);
+        clonedList.numElements = this.numElements;
+        return clonedList;
+    }
+
+
 
 }
