@@ -79,5 +79,21 @@ public class DynamicArrayList {
         }
         array = newArray;
     }
+    public boolean removeAll(String value) {
+        if (value == null) {
+            throw new IllegalArgumentException("Value to remove cannot be null");
+        }
+        boolean removed = false;
+        int newSize = 0;
+        for (int i = 0; i < numElements; i++) {
+            if (!array[i].equals(value)) {
+                array[newSize++] = array[i];
+            } else {
+                removed = true;
+            }
+        }
+        numElements = newSize;
+        return removed;
+    }
 
 }
