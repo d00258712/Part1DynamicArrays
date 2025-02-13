@@ -40,5 +40,44 @@ public class DynamicArrayList {
         }
         return array[index];
     }
+    public int indexOf(String value){
+        for (int i = 0; i < numElements ; i++) {
+            if  ((array[i] == null && value == null) || (array[i] != null && array[i].equals(value))) {
+                return i;
+            }
+        }
+        return -1;
+
+    }
+    public boolean add(String value){
+        if (numElements == array.length){
+            growArray();
+        }
+        array[numElements++] = value;
+        return true;
+    }
+    public boolean add(String value, int position) {
+        if (position < 0 || position > numElements) {
+            throw new IndexOutOfBoundsException("Invalid position: " + position);
+        }
+        if (numElements == array.length) {
+            growArray();
+        }
+        for (int i = numElements; i > position; i--) {
+            array[i] = array[i - 1];
+        }
+        array[position] = value;
+        numElements++;
+        return true;
+    }
+
+    private void growArray() {
+        int newCapacity = array.length * RESIZE_FACTOR;
+        String[] newArray = new String[newCapacity];
+        for (int i = 0; i < numElements; i++) {
+            newArray[i] = array[i];
+        }
+        array = newArray;
+    }
 
 }
